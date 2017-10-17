@@ -1,0 +1,13 @@
+<h1>Create a New Tasklist</h1>
+
+
+<%= simple_form_for @tasklist, url: tasklists_path, method: :post do |f| %>
+
+    <%= f.input :title, label:'Name of Tasklist', error: 'A title is necessary.', placeholder: 'e.g Homework' %>
+    <%= f.button :submit, "Create this tasklist" %>
+
+<% end %>
+
+<br>
+
+<%= link_to 'All Tasklists', tasklists_path %>
