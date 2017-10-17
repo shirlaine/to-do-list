@@ -1,0 +1,9 @@
+<h1>Task#edit</h1>
+
+<%= simple_form_for @task, url: task_path, method: :patch do |f| %>
+<%= f.input :name, label: 'Name', error: 'Name cannot be empty', placeholder: 'Get Milk' %>
+<%= f.input :description %>
+<%= f.input :due_date %>
+<%= f.button :submit, 'Update task' %>
+<% end %>
+
