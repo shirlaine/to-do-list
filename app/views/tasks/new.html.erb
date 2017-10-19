@@ -1,6 +1,6 @@
 <h1>Task#new</h1>
 
-<%= simple_form_for @task, url: tasks_path, method: :post do |f| %>
+<%= simple_form_for @task, url: tasklist_tasks_path, method: :post do |f| %>
   <%= f.input :name %>
   <%= f.input :description %>
   <%= f.input :due_date %>
