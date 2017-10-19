@@ -2,11 +2,7 @@ class TasklistsController < ApplicationController
 
   def index
     @tasklists = Tasklist.all
-  end
-
-  def show
-    @tasklist = Tasklist.find(params[:id])
-  end
+   end
 
   def new
     @tasklist = Tasklist.new
@@ -14,7 +10,7 @@ class TasklistsController < ApplicationController
 
   def edit
     @tasklist = Tasklist.find(params[:id])
-  end
+   end
 
   def create
     @tasklist = Tasklist.new(tasklist_params)
@@ -23,7 +19,7 @@ class TasklistsController < ApplicationController
     else
       render :new
     end
-  end
+   end
 
   def update
     @tasklist = Tasklist.find(params[:id])
@@ -32,13 +28,13 @@ class TasklistsController < ApplicationController
     else
       render :edit
     end
-  end
+   end
 
   def destroy
     @tasklist = Tasklist.find(params[:id])
     @tasklist.destroy
     redirect_to tasklists_path
-  end
+   end
 
   private
 
