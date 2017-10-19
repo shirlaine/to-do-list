@@ -4,15 +4,24 @@
     <table class= "table">
       <thead>
         <tr>
-          <th><%= tasklist.title %></th>
+          <th width = "30%"><%= tasklist.title %></th>
+           <th>Status</th>
           <th><%= link_to 'Edit List', edit_tasklist_path(tasklist) %></th>
           <th><%= link_to 'Destroy List', tasklist_path(tasklist), method: :delete, data: { confirm: 'Are you sure?' } %></th>
       </thead>
       <tbody>
          <td><%= link_to 'New Task', new_tasklist_task_path(tasklist) %></td>
          <tr>
+
            <% tasklist.tasks.each do |task| %>
          <td><%= link_to task.name, tasklist_task_path(tasklist, task), method: :get %></td>
+
+          <td><% if task.status? %>
+            <%= link_to "Incomplete", incomplete_tasklist_task_path(tasklist, task), method: :put %>
+            <% else %>
+            <%= link_to "Complete", complete_tasklist_task_path(tasklist, task), method: :put %>
+            <% end %>
+
          <td><%= link_to "Edit Task", edit_tasklist_task_path(tasklist, task), method: :get %></td>
          <td><%= link_to "Delete Task", tasklist_task_path(tasklist, task), method: :delete, data: { confirm: 'Are you sure?' } %></td>
          <tr>

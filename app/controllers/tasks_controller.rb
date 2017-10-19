@@ -3,7 +3,7 @@ class TasksController < ApplicationController
   before_action :prepare_tasklist
 
   def index
-    @tasks = @tasklist.tasks
+    @tasks = @tasklist.tasks.order(:name)
   end
 
   def show
@@ -44,6 +44,20 @@ class TasksController < ApplicationController
     @task = @tasklist.tasks.find(params[:id])
     @task.destroy
     flash[:notice] = 'Your task has been deleted'
+    redirect_to tasklists_path
+  end
+
+  def complete
+    @task = @tasklist.tasks.find(params[:id])
+    @task.status = true
+    @task.save
+    redirect_to tasklists_path
+  end
+
+  def incomplete
+    @task = @tasklist.tasks.find(params[:id])
+    @task.status = false
+    @task.save
     redirect_to tasklists_path
   end
 
