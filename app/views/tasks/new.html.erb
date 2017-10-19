@@ -1,8 +1,15 @@
-<h1>Task#new</h1>
+<div class= "container">
+  <div class= "row">
+    <div class= "col-lg-12">
+  <h1>New Task for Tasklist: <%=@tasklist.title %> </h1>
+    <%= simple_form_for @task, url: tasklist_tasks_path, method: :post do |f| %>
+      <%= f.input :name %>
+      <%= f.input :description %>
+      <%= f.input :due_date %>
+      <%= f.button :submit, 'Create task' %>
+    <% end %>
+    </div>
+  </div>
+</div>
 
-<%= simple_form_for @task, url: tasklist_tasks_path, method: :post do |f| %>
-  <%= f.input :name %>
-  <%= f.input :description %>
-  <%= f.input :due_date %>
-  <%= f.button :submit, 'Create task' %>
-<% end %>
+
