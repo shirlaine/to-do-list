@@ -1,10 +1,20 @@
+<nav class="navbar navbar-inverse bg-inverse">
+  <a class="navbar-brand" href="#">Navbar</a>
+</nav>
 
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-3">Fluid jumbotron</h1>
+    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+  </div>
+</div>
 
-<div class="container-fluid">
   <div class="row">
     <div class= "col-lg-10"></div>
-      <div class="col-lg-2">
-        <h3><%= link_to 'Create New Tasklist', new_tasklist_path %></h3>
+      <div class="col-lg-1">
+        <h3><%= link_to new_tasklist_path do %>
+      <button type="button" class="btn btn-primary btn-lg">Create New Tasklist</button>
+        <% end %></h3>
         <br>
       </div>
   </div>
@@ -48,5 +58,5 @@
       </div>
     </div>
   </div>
-</div>
+
 
