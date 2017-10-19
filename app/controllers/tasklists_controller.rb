@@ -27,7 +27,7 @@ class TasklistsController < ApplicationController
     @tasklist = Tasklist.find(params[:id])
     @tasklistold = Tasklist.find(params[:id])
     if @tasklist.update(tasklist_params)
-      flash[:notice] = "Tasklist's name has been changed from '" + @tasklistold[:title] + "' to '" + @tasklist[:title] +"'."
+      flash[:notice] = "Tasklist's name has been changed from '" + @tasklistold[:title] + "' to '" + @tasklist[:title] + "'."
       redirect_to tasklists_path
     else
       flash.now[:error] = "Tasklist '" + @tasklist[:title] + "' has not been updated. Name cannot be blank."
