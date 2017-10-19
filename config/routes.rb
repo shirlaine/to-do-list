@@ -4,6 +4,8 @@ Rails.application.routes.draw do
     resources :tasks do
       put 'complete', on: :member
       put 'incomplete', on: :member
+      put 'urgent', on: :member
+      put 'normal', on: :member
     end
   end
 

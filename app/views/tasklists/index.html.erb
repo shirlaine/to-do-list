@@ -13,8 +13,15 @@
          <td><%= link_to 'New Task', new_tasklist_task_path(tasklist) %></td>
          <tr>
 
+
            <% tasklist.tasks.each do |task| %>
-         <td><%= link_to task.name, tasklist_task_path(tasklist, task), method: :get %></td>
+         <td><%= link_to task.name, tasklist_task_path(tasklist, task), method: :get %>
+            <% if task.priority? %>
+            <%= link_to image_tag("urgent.png", style:"height: 4%; width: 4%;"), normal_tasklist_task_path(tasklist, task), method: :put %>
+            <% else %>
+            <%= link_to image_tag("normal.png", style:"height: 4%; width: 4%;"), urgent_tasklist_task_path(tasklist, task), method: :put %>
+            <% end %>
+         </td>
 
           <td><% if task.status? %>
             <%= link_to "Incomplete", incomplete_tasklist_task_path(tasklist, task), method: :put %>
