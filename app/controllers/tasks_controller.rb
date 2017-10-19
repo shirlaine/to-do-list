@@ -1,11 +1,13 @@
 class TasksController < ApplicationController
 
+  before_action :prepare_tasklist
+
   def index
-    @tasks = Task.all
+    @tasks = @tasklist.tasks
   end
 
   def show
-    @task = Task.find(params[:id])
+    @task = @tasklist.tasks.find(params[:id])
   end
 
   def new
@@ -13,10 +15,12 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.new(task_params)
-    if @task.save!
-      redirect_to tasks_path
+    @task = @tasklist.tasks.new(task_params)
+    if @task.save
+      flash[:notice] = 'Your task has been saved'
+      redirect_to tasklist_tasks_path(@tasklist)
     else
+      flash.now[:error] = 'Your task has not been saved. Name cannot be blank.'
       render :new
     end
   end
@@ -27,20 +31,30 @@ class TasksController < ApplicationController
 
   def update
     @task = Task.find(params[:id])
-    @task.update(task_params)
-    redirect_to tasks_path
+    if @task.update(task_params)
+      flash[:notice] = 'Your task has been updated'
+      redirect_to tasklist_tasks_path
+    else
+      flash.now[:error] = 'Your task has not been updated. Name cannot be blank.'
+      render :edit
+    end
   end
 
   def destroy
-    @task = Task.find(params[:id])
+    @task = @tasklist.tasks.find(params[:id])
     @task.destroy
-    redirect_to tasks_path
+    flash[:notice] = 'Your task has been deleted'
+    redirect_to tasklist_tasks_path
   end
 
   private
 
   def task_params
     params.require(:task).permit(:name, :description, :due_date)
+  end
+
+  def prepare_tasklist
+    @tasklist = Tasklist.find(params[:tasklist_id])
   end
 
 end

@@ -11,12 +11,13 @@
     <td><%= task.name %></td>
     <td><%= task.description %></td>
     <td><%= task.due_date %></td>
-    <td><%= link_to "Show Task", task_path(task), method: :get %></td>
-    <td><%= link_to "Edit Task", edit_task_path(task), method: :get %></td>
-    <td><%= link_to "Delete Task",task_path(task), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to "Show Task", tasklist_task_path(@tasklist, task), method: :get %></td>
+    <td><%= link_to "Edit Task", edit_tasklist_task_path(@tasklist, task), method: :get %></td>
+    <td><%= link_to "Delete Task", tasklist_task_path(@tasklist, task), method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tbody>
 <% end %>
 </table>
 <br>
-<%= link_to "New Task", new_task_path, method: :get %>
+<%= link_to "New Task", new_tasklist_task_path, method: :get %>
+
 
