@@ -1,25 +1,26 @@
 <h1>All Tasklists</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <% @tasklists.each do |tasklist| %>
+    <table class= "table">
+      <thead>
+        <tr>
+          <th><%= tasklist.title %></th>
+          <th><%= link_to 'Edit List', edit_tasklist_path(tasklist) %></th>
+          <th><%= link_to 'Destroy List', tasklist_path(tasklist), method: :delete, data: { confirm: 'Are you sure?' } %></th>
+      </thead>
+      <tbody>
+         <td><%= link_to 'New Task', new_tasklist_task_path(tasklist) %></td>
+         <tr>
+           <% tasklist.tasks.each do |task| %>
+         <td><%= link_to task.name, tasklist_task_path(tasklist, task), method: :get %></td>
+         <td><%= link_to "Edit Task", edit_tasklist_task_path(tasklist, task), method: :get %></td>
+         <td><%= link_to "Delete Task", tasklist_task_path(tasklist, task), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+         <tr>
+           <% end %>
+      </tbody>
+      </table>
+   <% end %>
 
-  <tbody>
-    <% @tasklists.each do |tasklist| %>
-      <tr>
-        <td><%= tasklist.title %></td>
-        <td><%= link_to 'Show', tasklist_path(tasklist) %></td>
-        <td><%= link_to 'Edit', edit_tasklist_path(tasklist) %></td>
-        <td><%= link_to 'Destroy', tasklist_path(tasklist), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
-</br>
 
 <%= link_to 'Create New Tasklist', new_tasklist_path %>

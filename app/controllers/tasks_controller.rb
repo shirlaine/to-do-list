@@ -18,7 +18,7 @@ class TasksController < ApplicationController
     @task = @tasklist.tasks.new(task_params)
     if @task.save
       flash[:notice] = 'Your task has been saved'
-      redirect_to tasklist_tasks_path(@tasklist)
+      redirect_to tasklists_path(@tasklist)
     else
       flash.now[:error] = 'Your task has not been saved. Name cannot be blank.'
       render :new
@@ -33,7 +33,7 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     if @task.update(task_params)
       flash[:notice] = 'Your task has been updated'
-      redirect_to tasklist_tasks_path
+      redirect_to tasklists_path
     else
       flash.now[:error] = 'Your task has not been updated. Name cannot be blank.'
       render :edit
@@ -44,7 +44,7 @@ class TasksController < ApplicationController
     @task = @tasklist.tasks.find(params[:id])
     @task.destroy
     flash[:notice] = 'Your task has been deleted'
-    redirect_to tasklist_tasks_path
+    redirect_to tasklists_path
   end
 
   private
