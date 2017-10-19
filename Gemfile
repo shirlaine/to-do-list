@@ -36,7 +36,7 @@ gem 'bootstrap', '~> 4.0.0.beta'
 gem 'simple_form'
 # Add rubocop
 gem 'rubocop', require: false
-#Add Devise
+# Add Devise
 gem 'devise'
 
 # Use Capistrano for deployment
