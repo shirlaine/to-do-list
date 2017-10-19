@@ -1,5 +1,7 @@
 class TasklistsController < ApplicationController
 
+  before_action :authenticate_user!
+
   def index
     @tasklists = Tasklist.order(:title)
   end
