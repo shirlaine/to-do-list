@@ -28,7 +28,8 @@ ActiveRecord::Schema.define(version: 20171017123244) do
     t.bigint "tasklist_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "complete"
+    t.boolean "status", default: false, null: false
+    t.boolean "priority", default: false, null: false
     t.index ["tasklist_id"], name: "index_tasks_on_tasklist_id"
   end
 
