@@ -19,7 +19,7 @@
   width: 100%;
   top:0;
   postion: fixed;
-  background-color: transparent;
+  background-color: #faf2e3;
 }
 
 .jumbotron {
@@ -37,4 +37,21 @@
     right: 0;
     position: absolute;
     z-index: 0;
+}
+
+a {
+  color: black;
+}
+
+.card-deck {
+  margin: 50px;
+}
+
+h4.card-title {
+  background-color: #ebebeb;
+  padding:15px;
+}
+
+body {
+  background-image: image-url("to-do-snow.jpg");
 }
