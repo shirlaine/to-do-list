@@ -3,7 +3,7 @@ class TasksController < ApplicationController
   before_action :prepare_tasklist
 
   def index
-    @tasks = @tasklist.tasks.order(:name)
+    @tasks = @tasklist.tasks.all.order(name: :asc).sort_by { |task| task.status ? 1 : 0 }
   end
 
   def show
@@ -17,10 +17,10 @@ class TasksController < ApplicationController
   def create
     @task = @tasklist.tasks.new(task_params)
     if @task.save
-      flash[:notice] = 'Your task has been saved'
+      flash[:success] = 'Your task has been saved'
       redirect_to tasklists_path(@tasklist)
     else
-      flash.now[:error] = 'Your task has not been saved. Name cannot be blank.'
+      flash.now[:alert] = 'Your task has not been saved. Name cannot be blank.'
       render :new
     end
   end
@@ -32,10 +32,10 @@ class TasksController < ApplicationController
   def update
     @task = Task.find(params[:id])
     if @task.update(task_params)
-      flash[:notice] = 'Your task has been updated'
+      flash[:success] = 'Your task has been updated'
       redirect_to tasklists_path
     else
-      flash.now[:error] = 'Your task has not been updated. Name cannot be blank.'
+      flash.now[:alert] = 'Your task has not been updated. Name cannot be blank.'
       render :edit
     end
   end
@@ -43,7 +43,7 @@ class TasksController < ApplicationController
   def destroy
     @task = @tasklist.tasks.find(params[:id])
     @task.destroy
-    flash[:notice] = 'Your task has been deleted'
+    flash[:success] = 'Your task has been deleted'
     redirect_to tasklists_path
   end
 
