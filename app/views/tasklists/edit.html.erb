@@ -4,7 +4,7 @@
 <%= simple_form_for @tasklist, url: tasklist_path, method: :put do |f| %>
 
     <%= f.input :title, label:'Name of Tasklist', error: 'A title is necessary.', placeholder: 'e.g Homework' %>
-    <%= f.button :submit, "Create this tasklist" %>
+    <%= f.button :submit, "Update this tasklist" %>
 
 <% end %>
 
@@ -12,3 +12,4 @@
 </br>
 
 <%= link_to 'Back to Index', tasklists_path %>
+<%= link_to 'Delete this tasklist', tasklist_path(@tasklist), method: :delete, data: { confirm: 'Are you sure?' } %>

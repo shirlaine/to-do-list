@@ -14,3 +14,46 @@
  *= require_self
  */
 @import "bootstrap";
+
+.navbar{
+  width: 100%;
+  top:0;
+  postion: fixed;
+  background-color: #faf2e3;
+  height: 55px;
+}
+
+a {
+  color: black;
+}
+
+.card-deck {
+  margin: 50px;
+  border-radius:80%;
+  padding: 10px;
+}
+
+.card-block{
+  background-color: #ebebeb;
+  height:20%
+}
+
+h4.card-title {
+  padding-top: 9px;
+}
+
+body {
+  background-image: image-url("to-do-snow.jpg");
+  background-repeat: no-repeat;
+    background-size: 100%;
+    margin-bottom: 0px;
+    height: 100%;
+    width: 100%;
+    display: block;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: 0;
+}
