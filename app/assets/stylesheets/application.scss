@@ -19,8 +19,14 @@
   width: 100%;
   top:0;
   postion: fixed;
-  background-color: #faf2e3;
+  background-color: #f0f8ff;
   height: 55px;
+}
+
+.greeting{
+  color: #3b5998;
+  padding-left: 80px;
+  padding-top: 20px;
 }
 
 a {
@@ -29,13 +35,14 @@ a {
 
 .card-deck {
   margin: 50px;
+  margin-top: 30px;
   border-radius:80%;
   padding: 10px;
 }
 
-.card-block{
-  background-color: #ebebeb;
-  height:20%
+.card-block {
+  background-color: #f0f8ff;
+  height:15%
 }
 
 h4.card-title {
