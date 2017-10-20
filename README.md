@@ -45,5 +45,6 @@ Run
 rails s
 ```
 In your browser, type
-```localhost:3000/tasklist
+```
+localhost:3000/tasklists
 ```

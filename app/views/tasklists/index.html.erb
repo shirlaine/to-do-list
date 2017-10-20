@@ -15,38 +15,42 @@
     <h1>Hi <%= current_user.first_name %>! These are your tasks for today.</h1>
     <div class="card-deck">
       <% @tasklists.each do |tasklist| %>
-      <div class="card">
-        <div class="card-block">
-          <h4 class="card-title text-center"><%= link_to tasklist.title, edit_tasklist_path(tasklist),method: :get %></h4>
-            <p class="card-text">
-              <ul class="list-group text-right">
-                <li class="list-group-item"><%= link_to '+', new_tasklist_task_path(tasklist) %></li>
-                <% tasklist.tasks.each do |task| %>
-                <li class="list-group-item">
-                  <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1"><%= link_to task.name, tasklist_task_path(tasklist, task), method: :get %></h5>
-                    <small>
-                      <% if task.priority? %>
-                      <%= link_to image_tag("urgent.png", style:"height: 4%; width: 4%;"), normal_tasklist_task_path(tasklist, task), method: :put %>
-                      <% else %>
-                      <%= link_to image_tag("normal.png", style:"height: 4%; width: 4%;"), urgent_tasklist_task_path(tasklist, task), method: :put %>
+      <div class="card-contain">
+        <div class="card">
+          <div class="card-block">
+            <h4 class="card-title text-center"><%= link_to tasklist.title, edit_tasklist_path(tasklist),method: :get %></h4>
+              <p class="card-text">
+                <ul class="list-group text-right">
+                  <li class="list-group-item"><%= link_to '+', new_tasklist_task_path(tasklist) %></li>
+                      <div class="scroller">
+                      <% tasklist.tasks.each do |task| %>
+                      <li class="list-group-item">
+                        <div class="d-flex w-100 justify-content-between">
+                          <small>
+                            <% if task.priority? %>
+                            <%= link_to image_tag("urgent.png", style:"height: 60%; width: 30%;"), normal_tasklist_task_path(tasklist, task), method: :put %>
+                            <% else %>
+                            <%= link_to image_tag("normal.png", style:"height: 60%; width: 30%;"), urgent_tasklist_task_path(tasklist, task), method: :put %>
+                            <% end %>
+                          </small>
+                          <h5 class="mb-1"><%= link_to task.name, tasklist_task_path(tasklist, task), method: :get %></h5>
+                          <small><% if task.status? %>
+                            <%= link_to incomplete_tasklist_task_path(tasklist, task), method: :put do %>
+                              <button type="button" class="btn btn-info btn-sm">completed</button>
+                            <% end %>
+                           <% else %>
+                            <%= link_to complete_tasklist_task_path(tasklist, task), method: :put do %>
+                              <button type="button" class="btn btn-warning btn-sm">in progress</button>
+                            <% end %>
+                          <% end %></small>
+                        </div>
+                        </li>
                       <% end %>
-                    </small>
-                    <small><% if task.status? %>
-                      <%= link_to incomplete_tasklist_task_path(tasklist, task), method: :put do %>
-                        <button type="button" class="btn btn-info btn-sm">completed</button>
-                      <% end %>
-                     <% else %>
-                      <%= link_to complete_tasklist_task_path(tasklist, task), method: :put do %>
-                        <button type="button" class="btn btn-warning btn-sm">in progress</button>
-                      <% end %>
-                    <% end %></small>
-                  </div>
-                  </li>
-                <% end %>
-              </ul>
-            </p>
-            <p class="card-text"><small class="text-muted">Created at: <%= tasklist.created_at %></small></p>
+                    </div>
+                </ul>
+              </p>
+              <p class="card-text"><small class="text-muted">Created at: <%= tasklist.created_at %></small></p>
+            </div>
           </div>
         </div>
       <% end %>
