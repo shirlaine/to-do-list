@@ -19,8 +19,14 @@
   width: 100%;
   top:0;
   postion: fixed;
-  background-color: #faf2e3;
+  background-color: #f0f8ff;
   height: 55px;
+}
+
+.greeting{
+  color: #3b5998;
+  padding-left: 80px;
+  padding-top: 20px;
 }
 
 a {
@@ -35,21 +41,22 @@ a {
 
 .card-deck {
   margin: 50px;
+  margin-top: 30px;
   border-radius:80%;
   padding: 10px;
 }
 
-.card-block{
-  background-color: #ebebeb;
+.card-block {
+  background-color: #f0f8ff;
+  height:15%;
 }
 
 .scroller {
-    max-height: 200px;
-    min-height: 100px;
+    height: 200px;
     overflow-y:scroll;
 }
 
-.card-contain{
+.card-contain {
   width: 400px;
   margin: 30px 30px;
 }

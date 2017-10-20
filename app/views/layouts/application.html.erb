@@ -9,13 +9,33 @@
   </head>
 
   <body>
+    <nav class="navbar navbar-inverse bg-inverse">
+    <a class="navbar-brand" href="#">To-Do-App</a>
+    <form class="navbar-item form-inline">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search">
+      <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
+    </form>
+    <h3 class="navbar-item text-center"><%= link_to new_tasklist_path do %>
+      <button type="button" class="btn btn-info btn-sm">Create New Tasklist</button>
+        <% end %></h3>
+        <h3 class="navbar-item text-center"><%= link_to destroy_user_session_path, method: :delete, data: { confirm: 'Are you sure you want to logout?' } do %>
+      <button type="button" class="btn btn-info btn-sm">Sign-out</button>
+        <% end %></h3>
+
+    </nav>
     <div>
-        <% flash.each do |key, value| %>
-          <% key %>
-          <%= value %>
+    <div class= "flash">
+      <% flash.each do |key, value| %>
+       <% if key == 'success'%>
+       <div class="alert-success <%= key %>">
+        <%= value %>
+        <% else %>
+        <div class="alert-danger" <%= key %>">
+        <%= value %>
         <% end %>
+      <% end %>
+      </div>
     </div>
     <%= yield %>
-
   </body>
 </html>
