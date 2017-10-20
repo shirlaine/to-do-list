@@ -1,3 +1,4 @@
+
 <nav class="navbar navbar-inverse bg-inverse">
   <a class="navbar-brand" href="#">To-Do-App</a>
   <form class="navbar-item form-inline">
@@ -9,18 +10,9 @@
       <% end %></h3>
 </nav>
 
-<div class="jumbotron jumbotron-fluid">
-  <div class="container">
-<div class="row">
-  <div class= "col-lg-10"></div>
-    <div class="col-lg-1">
-
-    </div>
-</div>
-  </div>
-</div>
 <div class="row">
   <div class= "col-lg-12">
+    <h1>Hi <%= current_user.first_name %>! These are your tasks for today.</h1>
     <div class="card-deck">
       <% @tasklists.each do |tasklist| %>
       <div class="card">
@@ -33,6 +25,13 @@
                 <li class="list-group-item">
                   <div class="d-flex w-100 justify-content-between">
                     <h5 class="mb-1"><%= link_to task.name, tasklist_task_path(tasklist, task), method: :get %></h5>
+                    <small>
+                      <% if task.priority? %>
+                      <%= link_to image_tag("urgent.png", style:"height: 4%; width: 4%;"), normal_tasklist_task_path(tasklist, task), method: :put %>
+                      <% else %>
+                      <%= link_to image_tag("normal.png", style:"height: 4%; width: 4%;"), urgent_tasklist_task_path(tasklist, task), method: :put %>
+                      <% end %>
+                    </small>
                     <small><% if task.status? %>
                       <%= link_to incomplete_tasklist_task_path(tasklist, task), method: :put do %>
                         <button type="button" class="btn btn-info btn-sm">completed</button>
@@ -54,5 +53,3 @@
     </div>
   </div>
 </div>
-
-

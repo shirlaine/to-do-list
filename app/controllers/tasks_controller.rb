@@ -61,6 +61,20 @@ class TasksController < ApplicationController
     redirect_to tasklists_path
   end
 
+  def urgent
+    @task = @tasklist.tasks.find(params[:id])
+    @task.priority = true
+    @task.save
+    redirect_to tasklists_path
+  end
+
+  def normal
+    @task = @tasklist.tasks.find(params[:id])
+    @task.priority = false
+    @task.save
+    redirect_to tasklists_path
+  end
+
   private
 
   def task_params
