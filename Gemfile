@@ -32,12 +32,12 @@ gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 # Add bootstrap gem
 gem 'bootstrap', '~> 4.0.0.beta'
-
 # Add simple_form
 gem 'simple_form'
-
 # Add rubocop
 gem 'rubocop', require: false
+# Add Devise
+gem 'devise'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

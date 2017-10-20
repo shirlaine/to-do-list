@@ -1,4 +1,4 @@
-<h1>All Tasklists</h1>
+<h1>Hi <%= current_user.first_name %>! These are your tasks for today.</h1>
 
   <% @tasklists.each do |tasklist| %>
     <table class= "table">
@@ -40,3 +40,4 @@
 
 
 <%= link_to 'Create New Tasklist', new_tasklist_path %>
+<%= link_to 'User Sign Out', destroy_user_session_path, method: :delete, data: {confirm: 'Are you sure you want to sign out?' } %>
