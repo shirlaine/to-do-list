@@ -33,6 +33,12 @@ a {
   color: black;
 }
 
+.card {
+  flex-basis: 50%;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
 .card-deck {
   margin: 50px;
   margin-top: 30px;
@@ -42,7 +48,17 @@ a {
 
 .card-block {
   background-color: #f0f8ff;
-  height:15%
+  height:15%;
+}
+
+.scroller {
+    height: 200px;
+    overflow-y:scroll;
+}
+
+.card-contain {
+  width: 400px;
+  margin: 30px 30px;
 }
 
 h4.card-title {
@@ -52,6 +68,7 @@ h4.card-title {
 body {
   background-image: image-url("to-do-snow.jpg");
   background-repeat: no-repeat;
+   background-attachment: fixed;
     background-size: 100%;
     margin-bottom: 0px;
     height: 100%;
@@ -63,4 +80,5 @@ body {
     right: 0;
     position: absolute;
     z-index: 0;
+    overflow-x:hidden;
 }

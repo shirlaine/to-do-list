@@ -18,9 +18,10 @@
     <h3 class="navbar-item text-center"><%= link_to new_tasklist_path do %>
       <button type="button" class="btn btn-info btn-sm">Create New Tasklist</button>
         <% end %></h3>
-        <h3 class="navbar-item text-center"><%= link_to destroy_user_session_path, method: :delete, data: { confirm: 'Are you sure you want to logout' } do %>
-      <button type="button" class="btn btn-info btn-sm">Sign out</button>
+        <h3 class="navbar-item text-center"><%= link_to destroy_user_session_path, method: :delete, data: { confirm: 'Are you sure you want to logout?' } do %>
+      <button type="button" class="btn btn-info btn-sm">Sign-out</button>
         <% end %></h3>
+
     </nav>
     <div>
     <div class= "flash">
